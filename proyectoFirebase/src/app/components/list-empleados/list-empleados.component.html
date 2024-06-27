@@ -1,0 +1,39 @@
+<div class="container mt-4">
+      <div class="card">
+        <div class="card-body">
+          <h3>Listado de Empleados</h3>
+          <div *ngIf="loading" class="spinner-border text-dark float-center" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <!--redireccion al componente empleado-->
+          <button class="btn btn-dark btn-lg float-end" routerLink="/create-empleado">Agregar</button>
+
+          <h5 *ngIf="empleados.length == 0" class="text-center">No hay registros para mostrar</h5>
+          <div class="table-responsive col-12">
+            <table *ngIf="empleados.length > 0" class="table mt-5 table-striped">
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>N.documento</th>
+                  <th>Salario</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let empleado of empleados">
+                  <td>{{ empleado.nombre }}</td>
+                  <td>{{ empleado.apellido }}</td>
+                  <td>{{ empleado.documento }}</td>
+                  <td>{{ empleado.salario | currency }}</td>
+                  <!--se le envia al componente editar el id-->
+                  <td class="text-center" [routerLink]="['/edit-empleado/', empleado.id]"><i class="fa-solid fa-pen-to-square fa-lg text-primary mr-2"></i></td>
+                  <td class="text-center" (click)="eliminarEmpleado(empleado.id)"><i class="fa-solid fa-trash-can fa-lg text-danger"></i></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+</div>

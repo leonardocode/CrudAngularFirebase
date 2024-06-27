@@ -1,0 +1,13 @@
+i{
+  cursor: pointer;
+}
+/* Ajustar el tamaño de los íconos en dispositivos móviles */
+@media (max-width: 767.98px) {
+  .table-responsive td i {
+    font-size: 1rem; /* Ajusta el tamaño según sea necesario */
+    margin: 0.5rem; /* Ajusta el margen para mejor alineación */
+  }
+  .table-responsive th, .table-responsive td {
+    white-space: nowrap;
+  }
+}
